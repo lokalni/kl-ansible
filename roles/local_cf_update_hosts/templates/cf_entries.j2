@@ -1,0 +1,4 @@
+{% for item in groups['bbb_hosts'] %}
+{{ item }} {{ hostvars[item].ansible_ssh_host }}
+{{ item|replace('bbb','turn') }} {{ hostvars[item].ansible_ssh_host }}
+{% endfor %}
