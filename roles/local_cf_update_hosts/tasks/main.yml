@@ -1,0 +1,7 @@
+- name: Create DNS entries template
+  template:
+    src: "cf_entries.j2"
+    dest: "/var/tmp/cf_entries"
+
+- name: Perform cloudflare DNS update
+  shell: "python {{ playbook_dir }}/misc/cloudflare_ns_update.py"

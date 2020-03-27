@@ -8,7 +8,7 @@ Rules
 
 * One main.yml entrypoint which handles all bbb hosts configuration
 * Keep most of generic config in group_vars
-* Use hosts file variables to provide region, sponsor name and url (prevent creating multiple host_vars for each server) - to maintain single-point-of-knowledge file
+* Use hosts file variables to provide region, sponsor name and url (avoid creating multiple host_vars for each server) - to maintain single-point-of-knowledge file
 * Hosts is also our secret store so keep it encrypted
 
 Roles
