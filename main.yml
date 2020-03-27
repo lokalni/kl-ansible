@@ -1,0 +1,15 @@
+- name: Create CloudFlare DNS Entries
+  gather_facts: false
+  hosts: 127.0.0.1
+  connection: local
+  roles:
+    - local_cf_update_hosts
+
+- name: Configure BBBs
+  hosts:
+    - bbb_hosts
+  roles:
+    - common
+    - bbb
+    - bbb_customize
+    - heartbeat_daemon
