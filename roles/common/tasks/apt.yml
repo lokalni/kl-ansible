@@ -1,0 +1,7 @@
+- name: Make cache
+  apt:
+    update_cache: true
+
+- name: Install HTTPS transport for APT
+  apt:
+    name: apt-transport-https

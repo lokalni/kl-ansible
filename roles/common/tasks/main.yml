@@ -1,0 +1,9 @@
+- import_tasks: apt.yml
+  tags:
+    - common
+    - common_apt
+
+- import_tasks: entropy.yml
+  tags:
+    - common
+    - common_entropy
