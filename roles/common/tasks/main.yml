@@ -1,0 +1,4 @@
+- import_tasks: apt.yml
+  tags:
+    - common
+    - common_apt
