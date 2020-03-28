@@ -1,0 +1,9 @@
+- name: Install haveged
+  apt:
+    name: haveged
+
+- name: Enable haveged
+  service:
+    name: haveged
+    state: started
+    enabled: true
