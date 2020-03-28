@@ -1,0 +1,17 @@
+- name: Install CertBot
+  apt:
+    name:
+      - certbot
+      - python3-certbot-nginx
+
+- name: Obtain certificate
+  command: >-
+    certbot run
+    --non-interactive
+    --preferred-challenges http
+    -d {{ bbb_host }}
+    --email {{ bbb_letsencrypt_email }}
+    --agree-tos
+    --nginx
+  args:
+    creates: "{{ bbb_letsencrypt_readme_path }}"

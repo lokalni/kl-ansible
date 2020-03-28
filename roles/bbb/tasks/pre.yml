@@ -1,0 +1,9 @@
+- name: Check current lang of systemd
+  shell: systemctl show-environment | grep ^LANG= | grep -q UTF-8
+  register: bbb__systemd_lang
+  failed_when: bbb__systemd_lang.rc not in [0, 1]
+  changed_when: false
+
+- name: Set UTF-8 lang in systemd
+  command: systemctl set-environment LANG=C.UTF-8
+  when: bbb__systemd_lang.rc == 1

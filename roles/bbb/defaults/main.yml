@@ -1,0 +1,6 @@
+#bbb_host: ""
+#bbb_letsencrypt_email: ""
+
+bbb_use_coturn: false
+#bbb_coturn_host: ""
+#bbb_coturn_secret: ""
