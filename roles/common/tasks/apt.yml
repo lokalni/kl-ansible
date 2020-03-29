@@ -5,3 +5,20 @@
 - name: Install HTTPS transport for APT
   apt:
     name: apt-transport-https
+
+- name: Check if initial upgrade was performed
+  stat:
+    path: "{{ common_apt_upgrade_marker }}"
+  register: common__apt_upgrade_marker
+
+- name: Initial upgrade of system
+  apt:
+    upgrade: dist
+  when: not common__apt_upgrade_marker.stat.exists
+
+- name: Create initial upgrade marker
+  file:
+    path: "{{ common_apt_upgrade_marker }}"
+    state: touch
+    access_time: preserve
+    modification_time: preserve
