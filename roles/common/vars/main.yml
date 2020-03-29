@@ -1,0 +1,1 @@
+common_apt_upgrade_marker: "/etc/.initial.upgrade.ansible"
