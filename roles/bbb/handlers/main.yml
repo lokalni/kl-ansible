@@ -1,0 +1,9 @@
+- name: Restart coturn
+  service:
+    name: coturn
+    state: restarted
+  listen: bbb::coturn
+
+- name: Restart BBB
+  command: bbb-conf --restart
+  listen: bbb::bbb

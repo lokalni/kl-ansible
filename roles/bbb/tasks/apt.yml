@@ -1,0 +1,38 @@
+- name: Add keys
+  apt_key:
+    url: "{{ item.url }}"
+    id: "{{ item.id }}"
+  loop:
+    - url: https://ubuntu.bigbluebutton.org/repo/bigbluebutton.asc
+      id: FAB46452
+    - url: https://www.mongodb.org/static/pgp/server-3.4.asc
+      id: A15703C6
+    - url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      id: "68576280"
+
+- name: Add repositories
+  apt_repository:
+    filename: "{{ item.filename }}"
+    repo: "{{ item.repo }}"
+    update_cache: false
+  loop:
+    - filename: bigbluebutton
+      repo: deb https://ubuntu.bigbluebutton.org/xenial-220 bigbluebutton-xenial main
+    - filename: mongodb-org-3.4
+      repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+    - filename: nodesource
+      repo: deb https://deb.nodesource.com/node_8.x xenial main
+
+- name: Configure PPA repositories
+  apt_repository:
+    repo: "{{ item }}"
+    update_cache: false
+  loop:
+    - ppa:bigbluebutton/support
+    - ppa:rmescandon/yq
+    - ppa:certbot/certbot
+
+# Do it once instead of redoing it every repo is added.
+- name: Make cache
+  apt:
+    update_cache: true

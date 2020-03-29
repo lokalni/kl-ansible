@@ -1,0 +1,126 @@
+- name: Accept license
+  debconf:
+    name: ttf-mscorefonts-installer
+    question: msttcorefonts/accepted-mscorefonts-eula
+    vtype: select
+    value: "true"
+
+- name: Install dependencies
+  apt:
+    name:
+      - openjdk-8-jre
+      - mongodb-org
+      - nodejs
+      - build-essential
+      - yq
+      - curl
+
+- name: Install BBB
+  apt:
+    name: bigbluebutton
+
+- name: Install Etherpad
+  apt:
+    name: bbb-etherpad
+
+- name: Wait for etherpad to generate API KEY
+  wait_for:
+    path: /usr/share/etherpad-lite/APIKEY.txt
+
+- name: Install BBB HTML 5
+  apt:
+    name: bbb-html5
+
+- name: Wait for BBB to take off
+  wait_for:
+    path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+
+- name: Create directory for systemd drop-in
+  file:
+    path: /etc/systemd/system/bbb-web.service.d
+    state: directory
+
+- name: Create drop-in for bbb-web
+  template:
+    src: bbb-web/systemd.conf.j2
+    dest: /etc/systemd/system/bbb-web.service.d/override.conf
+  register: bbb__web_systemd
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: true
+  when: bbb__web_systemd is changed
+
+- name: Template STUN configuration
+  template:
+    src: bbb-web/turn-stun-servers.xml.j2
+    dest: /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml
+  when: bbb_use_coturn
+
+- name: Enable WebRTC
+  replace:
+    path: /var/www/bigbluebutton/client/conf/config.xml
+    regexp: offerWebRTC="false"
+    replace: offerWebRTC="true"
+
+- name: Make HTML5 default client
+  replace:
+    path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+    regexp: "^{{ item }}JoinViaHTML5Client=.*"
+    replace: "{{ item }}JoinViaHTML5Client=true"
+  loop:
+    - attendees
+    - moderators
+
+- name: Disable SWF
+  replace:
+    path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+    regexp: swfSlidesRequired=true
+    replace: swfSlidesRequired=false
+
+- name: Enable SSL
+  replace:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  notify: bbb::bbb
+  loop:
+    - path: /etc/bigbluebutton/nginx/sip.nginx
+      regexp: "http:"
+      replace: "https:"
+    - path: /etc/bigbluebutton/nginx/sip.nginx
+      regexp: "5066"
+      replace: "7443"
+    - path: /var/www/bigbluebutton/client/conf/config.xml
+      regexp: http://
+      replace: https://
+    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
+      regexp: jnlpUrl=http://
+      replace: jnlpUrl=https://
+    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
+      regexp: jnlpFile=http://
+      replace: jnlpFile=https://
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: "bigbluebutton.web.serverURL=http:"
+      replace: "bigbluebutton.web.serverURL=https:"
+    - path: /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml
+      regexp: "^playback_protocol:.*"
+      replace: "playback_protocol: https"
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: "url: http:\/\/{{ bbb_host }}\/pad"
+      replace: "url: https://{{ bbb_host }}/pad"
+
+- name: Check current host of BBB
+  slurp:
+    path: "{{ bbb_host_file }}"
+  register: bbb__host
+  ignore_errors: true
+
+- name: Configure host in BBB
+  command: "bbb-conf --setip {{ bbb_host }}"
+  when: bbb__host is failed or (bbb__host.content | b64decode) != bbb_host
+
+- name: Save host of BBB
+  copy:
+    dest: "{{ bbb_host_file }}"
+    content: "{{ bbb_host }}"

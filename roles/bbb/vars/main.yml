@@ -1,0 +1,2 @@
+bbb_host_file: "/etc/.bbb-host.ansible.txt"
+bbb_letsencrypt_readme_path: "/etc/letsencrypt/live/{{ bbb_host }}/README"
