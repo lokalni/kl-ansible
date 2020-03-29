@@ -2,6 +2,10 @@
   template:
     src: "cf_entries.j2"
     dest: "/var/tmp/cf_entries"
+  tags:
+    - cloudflare
 
 - name: Perform cloudflare DNS update
   shell: "python {{ playbook_dir }}/misc/cloudflare_ns_update.py"
+  tags:
+    - cloudflare
