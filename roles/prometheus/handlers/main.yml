@@ -1,0 +1,5 @@
+- name: reload prometheus config
+  service:
+    name: prometheus
+    state: reloaded
+  listen: prometheus reload

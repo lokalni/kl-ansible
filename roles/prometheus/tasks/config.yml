@@ -1,0 +1,5 @@
+- name: Update prometheus config
+  template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+  notify: prometheus reload

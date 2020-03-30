@@ -1,0 +1,17 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+  external_labels:
+      monitor: 'teleklasa'
+scrape_configs:
+  - job_name: 'ansible'
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: bbb_nodes
+    static_configs:
+      - targets:
+{% for item in groups['bbb_hosts'] %}
+          - '{{ item }}:9100'
+{% endfor %}
