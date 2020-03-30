@@ -1,0 +1,3 @@
+- name: Install python-requests
+  apt:
+    name: python-requests
