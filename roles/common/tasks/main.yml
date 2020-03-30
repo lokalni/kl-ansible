@@ -9,5 +9,6 @@
     - common_entropy
 
 - import_tasks: firewall.yml
+  tags:
     - common
     - common_firewall
