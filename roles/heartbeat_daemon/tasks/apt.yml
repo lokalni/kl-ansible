@@ -1,0 +1,21 @@
+- name: Install python-requests
+  apt:
+    name: python-requests
+
+- name: Template kl-client.py
+  template:
+    src: kl-client.py
+    dest: /opt/kl-client.py
+
+- name: Save region name
+  template:
+    src: region
+    dest: /etc/region
+
+- name: Install crontab
+  copy:
+    src: kl_crontab
+    dest: /etc/cron.d/kl_crontab
+
+- name: Invoke register
+  shell: "/usr/bin/python /opt/kl-client.py"

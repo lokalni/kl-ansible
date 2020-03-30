@@ -1,0 +1,9 @@
+- import_tasks: apt.yml
+  tags:
+    - heartbeat_daemon
+    - heartbeat_daemon_apt
+
+- import_tasks: install.yml
+  tags:
+    - heartbeat_daemon
+    - heartbeat_daemon_install
