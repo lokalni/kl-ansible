@@ -35,7 +35,7 @@ def get_region():
 
 def heartbeat():
     requests.post(
-        "{}/nodes/".format(APP_ENDPOINT),
+        "{}/nodes/keepalive".format(APP_ENDPOINT),
         json={
             "cpu_count": get_cores(),
             "load_5m": get_load(),
