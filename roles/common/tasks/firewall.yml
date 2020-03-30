@@ -1,0 +1,19 @@
+- name: Remove firewalld if needed
+  apt:
+    name: firewalld
+    state: absent
+
+- name: Install iptables-persistent
+  apt:
+    name: iptables-persistent
+
+- name: Install firewall rules
+  copy:
+    src: "{{ playbook_dir }}/misc/firewall.rules"
+    dest: "/etc/iptables/rules.v4"
+    mode: "0411"
+  notify:
+    - reload iptables
+
+- name: Flush ansible handlers
+  meta: flush_handlers

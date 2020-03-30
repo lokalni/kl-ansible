@@ -7,3 +7,7 @@
   tags:
     - common
     - common_entropy
+
+- import_tasks: firewall.yml
+    - common
+    - common_firewall
