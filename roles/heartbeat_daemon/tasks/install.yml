@@ -14,4 +14,4 @@
     dest: /etc/cron.d/kl_crontab
 
 - name: Invoke register
-  shell: "/usr/bin/python /opt/kl-client.py"
+  shell: "/usr/bin/python /opt/kl-client.py register"
