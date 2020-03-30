@@ -7,7 +7,7 @@
   loop:
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: "^defaultWelcomeMessage="
-      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a> sponsorowanym przez <a href="{{ sponsor_url }}">{{ sponsor }}</a>. Instrukcje obsługi znajdziesz na <a href="{{ help_url }}">{{ help_url }}</a>'
+      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a> sponsorowanym przez <a href="{{ sponsor_url }}">{{ sponsor }}</a>. Instrukcje znajdziesz na <a href="{{ help_url }}">{{ help_url }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter='
       line: 'defaultWelcomeMessageFooter=eLearning <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a>'
