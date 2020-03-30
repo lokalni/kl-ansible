@@ -1,3 +1,8 @@
+- name: Configure PPA for prometheus
+  apt_repository:
+    repo: "ppa:prometheus-release-tracking/prometheus-exporters"
+    update_cache: false
+
 - name: Make cache
   apt:
     update_cache: true

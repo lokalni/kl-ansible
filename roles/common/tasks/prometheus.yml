@@ -1,0 +1,9 @@
+- name: Install prometheus-node-exporter
+  apt:
+    name: prometheus-node-exporter
+
+#- name: Enable haveged
+#  service:
+#    name: haveged
+#    state: started
+#    enabled: true

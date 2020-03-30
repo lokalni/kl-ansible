@@ -5,6 +5,7 @@
 :basesystem_icmp - [0:0]
 :basesystem_ssh - [0:0]
 :bigbluebutton - [0:0]
+:prometheus - [0:0]
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p tcp -m tcp --tcp-flags ACK ACK -j ACCEPT
 -A INPUT -p tcp -m tcp ! --tcp-flags FIN,SYN,RST,ACK SYN -m state --state NEW -j DROP
@@ -15,6 +16,7 @@
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p icmp -j basesystem_icmp
 -A INPUT -p tcp -m tcp -s 176.119.35.169/32 --dport 22 -j basesystem_ssh
+-A INPUT -p tcp -m tcp -s 176.119.35.169/32 --dport 9100 -j prometheus
 -A INPUT -m udp -p udp --dport 16384:32768 -j bigbluebutton
 -A INPUT -m tcp -p tcp --dport 80 -j bigbluebutton
 -A INPUT -m tcp -p tcp --dport 443 -j bigbluebutton
@@ -22,4 +24,5 @@
 -A basesystem_icmp -j ACCEPT
 -A basesystem_ssh -j ACCEPT
 -A bigbluebutton -j ACCEPT
+-A prometheus -j ACCEPT
 COMMIT
