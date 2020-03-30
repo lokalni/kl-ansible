@@ -10,7 +10,7 @@
       line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a> sponsorowanym przez <a href="{{ sponsor_url }}">{{ sponsor }}</a>. Instrukcje obsługi znajdziesz na <a href="{{ help_url }}">{{ help_url }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter'
-      line: 'eLearning <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a>'
+      line: 'defaultWelcomeMessageFooter=eLearning <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a>'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'clientTitle:'
       line: '    clientTitle: eLearning teleklasa.lokalni.pl'
