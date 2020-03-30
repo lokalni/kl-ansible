@@ -8,6 +8,11 @@
     - common
     - common_entropy
 
+- import_tasks: prometheus.yml
+  tags:
+    - common
+    - common_prometheus
+
 - import_tasks: firewall.yml
   tags:
     - common
