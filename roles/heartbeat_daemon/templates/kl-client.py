@@ -41,7 +41,7 @@ def heartbeat():
             "load_5m": get_load(),
             "api_secret": get_secret(),
             "hostname": get_host(),
-            "region_name": get_region()
+            "region": get_region()
         }
     )
 
