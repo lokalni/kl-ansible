@@ -4,6 +4,7 @@
   connection: local
   roles:
     - cloudflare
+    - prometheus
 
 - name: Configure BBBs
   hosts:
