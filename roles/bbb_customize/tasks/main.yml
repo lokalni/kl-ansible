@@ -1,0 +1,42 @@
+- name: Customize BBB configuration for teleklasa.lokalni.pl needs
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  notify: bbb_customize_restart
+  loop:
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: "^defaultWelcomeMessage"
+      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a> sponsorowanym przez <a href="{{ sponsor_url }}">{{ sponsor }}</a>. Instrukcje obsługi znajdziesz na <a href="{{ help_url }}">{{ help_url }}</a>'
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: '^defaultWelcomeMessageFooter'
+      line: 'eLearning <a href="https://teleklasa.lokalni.pl>teleklasa.lokalni.pl</a>'
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: 'clientTitle:'
+      line: '    clientTitle: eLearning teleklasa.lokalni.pl'
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: 'appName:'
+      line: '    appName: eLearning teleklasa.lokalni.pl'
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: 'copyright:'
+      line: '    copyright: "teleklasa.lokalni.pl"'
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: 'helpLink:'
+      line: '    helpLink: {{ help_url }}'
+  tags:
+    - bbb_customize
+
+- name: Upload whiteboard PDF and replace root index.html
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - src: "default.pdf"
+      dest: "/var/www/bigbluebutton-default/default.pdf"
+    - src: "index.html"
+      dest: "/var/www/bigbluebutton-default/index.html"
+  tags:
+    - bbb_customize

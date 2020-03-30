@@ -3,3 +3,6 @@ bbb_host: "{{ inventory_hostname }}"
 
 # LetsEncrypt
 bbb_letsencrypt_email: "teleklasa.noc@lokalni.pl"
+
+# Help URL
+help_url: "https://teleklasa.lokalni.pl/instrukcja/"

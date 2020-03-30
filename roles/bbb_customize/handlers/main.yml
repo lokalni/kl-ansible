@@ -1,0 +1,3 @@
+- name: Restart BBB after customization
+  command: bbb-conf --restart
+  listen: bbb_customize_restart
