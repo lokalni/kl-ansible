@@ -7,7 +7,7 @@
   loop:
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: "^defaultWelcomeMessage="
-      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu sponsorowanym przez <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
+      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu Aniola Mocy Edukacyjnej <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter='
       line: 'defaultWelcomeMessageFooter='
