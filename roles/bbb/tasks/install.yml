@@ -78,6 +78,12 @@
     regexp: swfSlidesRequired=true
     replace: swfSlidesRequired=false
 
+- name: Disable recording
+  replace:
+    path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+    regexp: disableRecordingDefault=false
+    replace: disableRecordingDefault=true
+
 - name: Enable SSL
   replace:
     path: "{{ item.path }}"
