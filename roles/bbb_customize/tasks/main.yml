@@ -6,6 +6,9 @@
   notify: bbb_customize_restart
   loop:
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: "^disableRecordingDefault="
+      line: "disableRecordingDefault=true"
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: "^defaultWelcomeMessage="
       line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu Aniola Mocy Edukacyjnej <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
