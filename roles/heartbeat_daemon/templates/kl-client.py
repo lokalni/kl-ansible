@@ -4,7 +4,7 @@ import sys
 import random
 import time
 
-APP_ENDPOINT="https://app-teleklasa.lokalni.pl"
+APP_ENDPOINT="https://app.teleklasa.lokalni.pl"
 
 def get_cores():
      return int(open(
