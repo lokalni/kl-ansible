@@ -35,7 +35,7 @@ def get_region():
 
 def heartbeat():
     requests.post(
-        "{}/nodes/keepalive/".format(APP_ENDPOINT),
+        "{}/api/v1/nodes/keepalive/".format(APP_ENDPOINT),
         json={
             "cpu_count": get_cores(),
             "load_5m": get_load(),
@@ -47,7 +47,7 @@ def heartbeat():
 
 def register():
     requests.post(
-        "{}/nodes/".format(APP_ENDPOINT),
+        "{}/api/v1/nodes/".format(APP_ENDPOINT),
         json={
             "hostname": get_host(),
             "api_secret": get_secret()
