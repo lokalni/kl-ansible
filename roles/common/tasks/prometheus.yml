@@ -1,3 +1,16 @@
 - name: Install prometheus-node-exporter
   apt:
     name: prometheus-node-exporter
+
+- name: Create textfile exporter directory
+  file:
+    path: /var/tmp/metrics/
+    state: directory
+    owner: prometheus
+    group: prometheus
+
+- name: Configure prometheus
+  copy:
+    src: prometheus-node-exporter
+    dest: /etc/default/prometheus-node-exporter
+  notify: prometheus_node_exporter_restart
