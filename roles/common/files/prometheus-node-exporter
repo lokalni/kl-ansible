@@ -1,1 +1,1 @@
-ARGS='-collector.diskstats.ignored-devices="^(ram|loop|fd)\\d+$ -collector.textfile.directory="/var/tmp/metrics/"'
+it ARGS='-collector.diskstats.ignored-devices="^(ram|loop|fd)\\d+$ -collector.textfile.directory /var/tmp/metrics'
