@@ -1,3 +1,9 @@
 - name: Restore iptables rules
   command: iptables-restore /etc/iptables/rules.v4
   listen: reload iptables
+
+- name: Restart Prometheus node_exporter
+  service:
+    name: prometheus-node-exporter
+    state: restarted 
+  listen: prometheus_node_exporter_restart
