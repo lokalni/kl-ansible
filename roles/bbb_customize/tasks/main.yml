@@ -29,7 +29,7 @@
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'helpLink:'
       line: '    helpLink: {{ help_url }}'
- tags:
+  tags:
     - bbb_customize
 
 - name: Upload whiteboard PDF and replace root index.html
