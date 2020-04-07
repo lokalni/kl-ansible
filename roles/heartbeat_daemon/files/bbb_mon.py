@@ -37,6 +37,6 @@ def save_stats():
     for metric, value in get_metrics().iteritems():
         filecontents += "bbb_{} {}\n".format(metric, value)
     with open("/var/tmp/metrics/bbb_stats.prom", "w") as fh:
-    	fh.write(filecontents)
+    	fh.write(filecontents+"\n")
 
 save_stats()
