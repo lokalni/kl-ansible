@@ -15,6 +15,9 @@
       regexp: '^defaultWelcomeMessageFooter='
       line: 'defaultWelcomeMessageFooter='
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: 'skipCheck:'
+      line: '    skipCheck: true'
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'clientTitle:'
       line: '    clientTitle: eLearning teleklasa.lokalni.pl'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
