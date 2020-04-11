@@ -16,7 +16,13 @@
       line: 'defaultWelcomeMessageFooter='
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^allowModsToUnmuteUsers='
-      line: 'allowModsToUnmuteUsers=true'
+      line: 'allowModsToUnmuteUsers=false'
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: '^webcamsOnlyForModerator='
+      line: 'webcamsOnlyForModerator=true'
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: '^muteOnStart='
+      line: 'muteOnStart=true'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'skipCheck:'
       line: '    skipCheck: true'
