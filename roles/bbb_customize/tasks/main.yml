@@ -14,6 +14,9 @@
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter='
       line: 'defaultWelcomeMessageFooter='
+    - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+      regexp: '^allowModsToUnmuteUsers='
+      line: 'allowModsToUnmuteUsers=true'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'skipCheck:'
       line: '    skipCheck: true'
