@@ -56,7 +56,7 @@ def register():
 
 if __name__=="__main__":
     # Random sleep to not hit app server too hard
-    # time.sleep(random.uniform(0.0,20000.0))
+    time.sleep(random.uniform(0.0,5000.0))
     if sys.argv[1] == "heartbeat":
         heartbeat()
     elif "register":
