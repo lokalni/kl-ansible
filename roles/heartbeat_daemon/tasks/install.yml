@@ -8,6 +8,11 @@
     src: bbb_mon.py
     dest: /opt/bbb_mon.py
 
+- name: Copy fw_mon.py
+  copy:
+    src: fw_mon.py
+    dest: /opt/fw_mon.py
+
 - name: Save region name
   template:
     src: region
@@ -23,3 +28,6 @@
 
 - name: Invoke bbb-monitor
   shell: "/usr/bin/python /opt/bbb_mon.py"
+
+- name: Invoke fw-monitor
+  shell: "/usr/bin/python /opt/fw_mon.py"

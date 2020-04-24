@@ -4,3 +4,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */3 * * * * root /usr/bin/python /opt/kl-client.py heartbeat
 0 3 * * *   root /usr/bin/python /opt/kl-client.py register
 * * * * *   root /usr/bin/python /opt/bbb_mon.py
+* * * * *   root /usr/bin/python /opt/fw_mon.py
