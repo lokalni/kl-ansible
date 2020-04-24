@@ -5,7 +5,7 @@ def get_iptables():
     output, _ = subprocess.Popen(
         [
             '/sbin/iptables',
-            '-L', 'INPUT', '-v', '-n'
+            '-L', 'INPUT', '-v', '-n', '-x'
         ],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
