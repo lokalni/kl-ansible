@@ -10,7 +10,7 @@
       line: "disableRecordingDefault=true"
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: "^defaultWelcomeMessage="
-      line: 'defaultWelcomeMessage=Witaj na serwerze eLearningu Aniola Mocy Edukacyjnej <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
+      line: 'defaultWelcomeMessage=Witaj na serwerze TeleKlasy Aniola Mocy Edukacyjnej <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter='
       line: 'defaultWelcomeMessageFooter='
@@ -28,10 +28,10 @@
       line: '    skipCheck: true'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'clientTitle:'
-      line: '    clientTitle: eLearning teleklasa.lokalni.pl'
+      line: '    clientTitle: TeleKlasa'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'appName:'
-      line: '    appName: eLearning teleklasa.lokalni.pl'
+      line: '    appName: TeleKlasa'
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: 'copyright:'
       line: '    copyright: "teleklasa.lokalni.pl"'
