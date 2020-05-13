@@ -109,6 +109,9 @@
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: "url: http:\/\/{{ bbb_host }}\/pad"
       replace: "url: https://{{ bbb_host }}/pad"
+    - path: /etc/nginx/sites-available/bigbluebutton
+      regexp: "server_name:"
+      replace: "server_name: {{ bbb_host}}"
 
 - name: Check current host of BBB
   slurp:
