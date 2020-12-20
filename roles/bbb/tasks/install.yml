@@ -86,11 +86,11 @@
   notify: bbb::bbb
   loop:
     - path: /etc/bigbluebutton/nginx/sip.nginx
-      regexp: "http:"
-      replace: "https:"
+      regexp: "https:"
+      replace: "http:"
     - path: /etc/bigbluebutton/nginx/sip.nginx
-      regexp: "5066"
-      replace: "7443"
+      regexp: "7443"
+      replace: "5066"
     - path: /var/www/bigbluebutton/client/conf/config.xml
       regexp: http://
       replace: https://
@@ -109,6 +109,15 @@
     - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
       regexp: "url: http:\/\/{{ bbb_host }}\/pad"
       replace: "url: https://{{ bbb_host }}/pad"
+    - path: /opt/freeswitch/etc/freeswitch/vars.xml
+      regexp: "external_rtp_ip=stun:stun.freeswitch.org"
+      replace: "external_rtp_ip={{ bbb_host }}"
+    - path: /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+      regexp: "sipjsHackViaWs: false"
+      replace: "sipjsHackViaWs: true"
+    - path: /opt/freeswitch/conf/sip_profiles/external.xml
+      regexp: "\":5066"
+      replace: "\"{{ bbb_host }}:5066"
 
 - name: Check current host of BBB
   slurp:
