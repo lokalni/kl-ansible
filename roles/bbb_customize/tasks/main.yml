@@ -13,7 +13,7 @@
       line: 'defaultWelcomeMessage=Witaj na serwerze TeleKlasy Aniola Mocy Edukacyjnej <a href="{{ sponsor_url }}">{{ sponsor }}</a>'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^defaultWelcomeMessageFooter='
-      line: 'defaultWelcomeMessageFooter='
+      line: 'defaultWelcomeMessageFooter={{ bbb_host }}'
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: '^allowModsToUnmuteUsers='
       line: 'allowModsToUnmuteUsers=false'
