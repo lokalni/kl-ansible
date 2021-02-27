@@ -89,7 +89,7 @@
       regexp: "https:"
       replace: "http:"
     - path: /etc/bigbluebutton/nginx/sip.nginx
-      regexp: "7433"
+      regexp: "7443"
       replace: "5066"
     - path: /var/www/bigbluebutton/client/conf/config.xml
       regexp: http://
