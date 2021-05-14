@@ -5,8 +5,8 @@
   loop:
     - url: https://ubuntu.bigbluebutton.org/repo/bigbluebutton.asc
       id: FAB46452
-    - url: https://www.mongodb.org/static/pgp/server-3.4.asc
-      id: A15703C6
+    - url: https://www.mongodb.org/static/pgp/server-4.2.asc
+      id: "058F8B6B"
     - url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       id: "68576280"
 
