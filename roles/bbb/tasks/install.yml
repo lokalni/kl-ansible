@@ -57,11 +57,11 @@
     dest: /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml
   when: bbb_use_coturn
 
-- name: Enable WebRTC
-  replace:
-    path: /var/www/bigbluebutton/client/conf/config.xml
-    regexp: offerWebRTC="false"
-    replace: offerWebRTC="true"
+#- name: Enable WebRTC
+#  replace:
+#    path: /var/www/bigbluebutton/client/conf/config.xml
+#    regexp: offerWebRTC="false"
+#    replace: offerWebRTC="true"
 
 - name: Make HTML5 default client
   replace:
@@ -91,9 +91,9 @@
     - path: /etc/bigbluebutton/nginx/sip.nginx
       regexp: "7443"
       replace: "5066"
-    - path: /var/www/bigbluebutton/client/conf/config.xml
-      regexp: http://
-      replace: https://
+#    - path: /var/www/bigbluebutton/client/conf/config.xml
+#      regexp: http://
+#      replace: https://
 #    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
 #      regexp: jnlpUrl=http://
 #      replace: jnlpUrl=https://
