@@ -17,11 +17,11 @@
     update_cache: false
   loop:
     - filename: bigbluebutton
-      repo: deb https://ubuntu.bigbluebutton.org/xenial-220 bigbluebutton-xenial main
-    - filename: mongodb-org-3.4
-      repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+      repo: deb https://ubuntu.bigbluebutton.org/bionic-230 bigbluebutton-bionic main
+    - filename: mongodb-org-4.2
+      repo: deb http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse
     - filename: nodesource
-      repo: deb https://deb.nodesource.com/node_8.x xenial main
+      repo: deb https://deb.nodesource.com/node_12.x bionic main
 
 - name: Configure PPA repositories
   apt_repository:
@@ -29,6 +29,7 @@
     update_cache: false
   loop:
     - ppa:bigbluebutton/support
+    - ppa:libreoffice/ppa
     - ppa:rmescandon/yq
     - ppa:certbot/certbot
 
