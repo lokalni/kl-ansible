@@ -94,12 +94,12 @@
     - path: /var/www/bigbluebutton/client/conf/config.xml
       regexp: http://
       replace: https://
-    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
-      regexp: jnlpUrl=http://
-      replace: jnlpUrl=https://
-    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
-      regexp: jnlpFile=http://
-      replace: jnlpFile=https://
+#    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
+#      regexp: jnlpUrl=http://
+#      replace: jnlpUrl=https://
+#    - path: /usr/share/red5/webapps/screenshare/WEB-INF/screenshare.properties
+#      regexp: jnlpFile=http://
+#      replace: jnlpFile=https://
     - path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
       regexp: "bigbluebutton.web.serverURL=http:"
       replace: "bigbluebutton.web.serverURL=https:"
