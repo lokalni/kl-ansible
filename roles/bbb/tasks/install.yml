@@ -16,7 +16,7 @@
       - curl
       - docker-ce
       - docker-ce-cli
-      - cointainerd.io
+      - containerd.io
 
 - name: Install BBB
   apt:
