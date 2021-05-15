@@ -4,14 +4,14 @@ import hashlib
 
 def get_host():
     return open(
-               '/etc/bigbluebutton/bigbluebutton.properties'
+               '/etc/bigbluebutton/bbb-web.properties'
            ).read().split(
                'bigbluebutton.web.serverURL=https://'
            )[1].split("\n")[0].strip()
 
 def get_secret():
     return hashlib.sha1("getMeetings{}".format(open(
-               '/etc/bigbluebutton/bigbluebutton.properties'
+               '/etc/bigbluebutton/bbb-web.properties'
            ).read().split(
                'securitySalt='
            )[1].split("\n")[0].strip())).hexdigest()
