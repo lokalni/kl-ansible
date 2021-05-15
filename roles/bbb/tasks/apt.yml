@@ -9,6 +9,8 @@
       id: "058F8B6B"
     - url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       id: "68576280"
+    - url: https://download.docker.com/linux/ubuntu/gpg
+      id: "0EBFCD88"
 
 - name: Add repositories
   apt_repository:
@@ -22,6 +24,8 @@
       repo: deb http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse
     - filename: nodesource
       repo: deb https://deb.nodesource.com/node_12.x bionic main
+    - filename: docker
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bonic stable
 
 - name: Configure PPA repositories
   apt_repository:
