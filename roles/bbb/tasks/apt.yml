@@ -25,7 +25,7 @@
     - filename: nodesource
       repo: deb https://deb.nodesource.com/node_12.x bionic main
     - filename: docker
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bonic stable
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
 
 - name: Configure PPA repositories
   apt_repository:
