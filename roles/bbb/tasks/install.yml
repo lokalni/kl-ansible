@@ -34,10 +34,12 @@
   apt:
     name: bbb-html5
 
-- name: Configure nginx
+- name: Moving nginx template
   template:
     src: bbb-web/nginx.conf
     dest: /etc/nginx/sites-available/bigbluebutton
+
+- name: Configuring template
   replace:
     path: /etc/nginx/sites-available/bigbluebutton
     regexp: ZZZZZ
