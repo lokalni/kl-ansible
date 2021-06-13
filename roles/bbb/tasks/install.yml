@@ -41,7 +41,7 @@
   replace:
     path: /etc/nginx/sites-available/bigbluebutton
     regexp: ZZZZZ
-    replace: {{ bbb_host }}
+    replace: "{{ bbb_host }}"
 
 - name: Generate DH key
   openssl_dhparam:
