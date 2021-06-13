@@ -8,12 +8,14 @@
     - bbb
     - bbb_apt
 
+- import_tasks: letsencrypt.yml
+  tags:
+    - bbb
+    - bbb_letsencrypt
+
 - import_tasks: install.yml
   tags:
     - bbb
     - bbb_install
 
-- import_tasks: letsencrypt.yml
-  tags:
-    - bbb
-    - bbb_letsencrypt
+
