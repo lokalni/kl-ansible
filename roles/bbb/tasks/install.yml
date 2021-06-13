@@ -34,6 +34,19 @@
   apt:
     name: bbb-html5
 
+- name: Configure nginx
+  template:
+    src: bbb-web/nginx.conf
+    dest: /etc/nginx/sites-available/bigbluebutton
+  replace:
+    path: /etc/nginx/sites-available/bigbluebutton
+    regexp: ZZZZZ
+    replace: {{ bbb_host }}
+
+- name: Generate DH key
+  openssl_dhparam:
+    path: /etc/ssl/dhp-4096.pem
+
 - name: Wait for BBB to take off
   wait_for:
     path: /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
